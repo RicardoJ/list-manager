@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +11,7 @@ const Item = styled.div`
   margin-bottom: 1.5rem;
   padding: 0.4rem 0.4rem 0.4rem 0.7rem;
   border-radius: 0.3rem;
-  width: 32rem;
+  width: 25rem;
   display: flex;
   justify-content: space-between;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
@@ -23,12 +23,16 @@ const Icons = styled.div`
 `;
 
 const ListItem = () => {
-  const ListFixed = ["Food", "Hobbie", "Sports", "Drinks"];
+  const [listFixed, setListFixed] = useState([
+    { item: "Food", id: 1 },
+    { item: "Hobbie", id: 1 },
+    { item: "Sports", id: 1 },
+  ]);
   return (
     <>
-      {ListFixed.map((listItem, index) => (
-        <Item key={index}>
-          {listItem}
+      {listFixed.map((listItem) => (
+        <Item key={listItem.id}>
+          {listItem.item}
           <Icons>
             <Button>
               <FontAwesomeIcon icon={faEdit} title="Edit" />

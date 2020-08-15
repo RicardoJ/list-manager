@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import List from "./page/List";
+import ListManager from "./page/ListManager";
 
 const Container = styled.div`
   width: 100%;
@@ -10,6 +10,7 @@ const Container = styled.div`
 `;
 
 const AppWrapper = styled.div`
+  display: flex;
   width: 90%;
   max-width: 150rem;
   height: 70vh;
@@ -23,7 +24,7 @@ function App() {
   return (
     <Container>
       <AppWrapper>
-        <List />
+        <ListManager />
       </AppWrapper>
     </Container>
   );
