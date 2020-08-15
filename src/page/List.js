@@ -32,8 +32,8 @@ const List = () => {
     <Container>
       <Title>
         List
-        <Button>
-          <FontAwesomeIcon icon={faTrash} />
+        <Button >
+          <FontAwesomeIcon icon={faTrash} title='Delete all'/>
         </Button>
       </Title>
       <ListItem />

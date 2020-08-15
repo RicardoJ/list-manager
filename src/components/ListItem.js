@@ -31,10 +31,10 @@ const ListItem = () => {
           {listItem}
           <Icons>
             <Button>
-              <FontAwesomeIcon icon={faEdit} />
+              <FontAwesomeIcon icon={faEdit} title="Edit" />
             </Button>
             <Button>
-              <FontAwesomeIcon icon={faTrash} />
+              <FontAwesomeIcon icon={faTrash} title="Delete" />
             </Button>
           </Icons>
         </Item>
