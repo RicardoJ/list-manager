@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import Button from "./Button";
 
 const Item = styled.div`
   font-size: 1.8rem;
@@ -20,6 +21,7 @@ const Icons = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 const ListItem = () => {
   const ListFixed = ["Food", "Hobbie", "Sports", "Drinks"];
   return (
@@ -28,8 +30,12 @@ const ListItem = () => {
         <Item key={index}>
           {listItem}
           <Icons>
-            <FontAwesomeIcon icon={faEdit} />
-            <FontAwesomeIcon icon={faTrash} />
+            <Button>
+              <FontAwesomeIcon icon={faEdit} />
+            </Button>
+            <Button>
+              <FontAwesomeIcon icon={faTrash} />
+            </Button>
           </Icons>
         </Item>
       ))}

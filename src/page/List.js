@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ListItem from "../components/ListItem";
+import Button from "../components/Button";
 
 const Container = styled.div`
   width: 40%;
@@ -30,7 +31,10 @@ const List = () => {
   return (
     <Container>
       <Title>
-        List <FontAwesomeIcon icon={faTrash} />
+        List
+        <Button>
+          <FontAwesomeIcon icon={faTrash} />
+        </Button>
       </Title>
       <ListItem />
     </Container>
