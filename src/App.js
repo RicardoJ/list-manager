@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import List from "./page/List";
 
 const Container = styled.div`
   width: 100%;
@@ -11,8 +12,9 @@ const Container = styled.div`
 const AppWrapper = styled.div`
   width: 90%;
   max-width: 150rem;
-  height: 85vh;
+  height: 70vh;
   margin: 50px auto;
+  padding: 30px;
   border-radius: 0.5rem;
   box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.2);
 `;
@@ -20,7 +22,9 @@ const AppWrapper = styled.div`
 function App() {
   return (
     <Container>
-      <AppWrapper>Hi there</AppWrapper>
+      <AppWrapper>
+        <List />
+      </AppWrapper>
     </Container>
   );
 }
