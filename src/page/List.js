@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import ItemList from "../components/ItemList";
+import Item from "../components/Item";
 import Button from "../components/Button";
 
 const Container = styled.div`
@@ -26,32 +26,39 @@ const Title = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const Items = styled.div`
+const ItemList = styled.div`
   overflow-y: auto;
 `;
-const List = ({ items, removeItemOne, removeAll, findItem }) => {
+const List = ({
+  items,
+  onRemoveAll,
+  onRemoveItem,
+  onEdit,
+  onItemClick
+}) => {
   return (
     <Container>
       <Title>
         List
-        <Button onClick={removeAll}>
+        <Button onClick={onRemoveAll}>
           <FontAwesomeIcon icon={faTrash} title="Delete all" />
         </Button>
       </Title>
-      <Items>
+      <ItemList>
         {items.length ? (
           items.map((item) => (
-            <ItemList
-              items={item}
+            <Item
               key={item.id}
-              removeItemOne={removeItemOne}
-              findItem={findItem}
+              item={item}
+              onRemoveItem={onRemoveItem}
+              onEdit={onEdit}
+              onItemClick={onItemClick}
             />
           ))
         ) : (
           <h1>No Items</h1>
         )}
-      </Items>
+      </ItemList>
     </Container>
   );
 };

@@ -35,7 +35,7 @@ const Form = ({ onSubmit, updateItem, editItem }) => {
 
   const keyPress = (e) => {
     if (e.key === "Enter") {
-      handleSubmit(e)
+      handleSubmit(e);
     }
   };
 
@@ -44,7 +44,7 @@ const Form = ({ onSubmit, updateItem, editItem }) => {
   }, [editItem]);
 
   return (
-    <InnerForm onSubmit={handleSubmit}>
+    <InnerForm>
       <Input value={value} onChange={updateValue} onKeyDown={keyPress} />
       <Add>
         <Button onClick={handleSubmit}>

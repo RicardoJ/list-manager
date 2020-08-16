@@ -6,7 +6,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "./Button";
 
-const Item = styled.div`
+const ItemWrapper = styled.div`
   font-size: 1.8rem;
   letter-spacing: 0.1rem;
   margin-bottom: 1.5rem;
@@ -23,20 +23,20 @@ const Icons = styled.div`
   justify-content: space-between;
 `;
 
-const ItemList = ({ items, removeItemOne, findItem }) => {
+const Item = ({ item, onEdit, onRemoveItem, onItemClick }) => {
   return (
-    <Item>
-      {items.name}
+    <ItemWrapper>
+      <Button onClick={() => onItemClick(item)}>{item.name}</Button>
       <Icons>
-        <Button onClick={() => findItem(items.id)}>
+        <Button onClick={() => onEdit(item)}>
           <FontAwesomeIcon icon={faEdit} title="Edit" />
         </Button>
-        <Button onClick={() => removeItemOne(items.id)}>
+        <Button onClick={() => onRemoveItem(item.id)}>
           <FontAwesomeIcon icon={faTrash} title="Delete" />
         </Button>
       </Icons>
-    </Item>
+    </ItemWrapper>
   );
 };
 
-export default ItemList;
+export default Item;
