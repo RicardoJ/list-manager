@@ -31,12 +31,8 @@ const ItemList = ({ items, removeItemOne }) => {
         <Button>
           <FontAwesomeIcon icon={faEdit} title="Edit" />
         </Button>
-        <Button>
-          <FontAwesomeIcon
-            icon={faTrash}
-            title="Delete"
-            onClick={()=>removeItemOne(items.id)}
-          />
+        <Button onClick={() => removeItemOne(items.id)}>
+          <FontAwesomeIcon icon={faTrash} title="Delete" />
         </Button>
       </Icons>
     </Item>

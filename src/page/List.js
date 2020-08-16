@@ -27,18 +27,23 @@ const Title = styled.div`
   justify-content: space-between;
 `;
 
-const List = ({ items, removeItemOne }) => {
+const List = ({ items, removeItemOne, removeAll }) => {
+  //console.log(items.length);
   return (
     <Container>
       <Title>
         List
-        <Button>
+        <Button onClick={removeAll}>
           <FontAwesomeIcon icon={faTrash} title="Delete all" />
         </Button>
       </Title>
-      {items.map((item) => (
-        <ListItem items={item} key={item.id} removeItemOne={removeItemOne} />
-      ))}
+      {items.length === 0 ? (
+        <h1>none</h1>
+      ) : (
+        items.map((item) => (
+          <ListItem items={item} key={item.id} removeItemOne={removeItemOne} />
+        ))
+      )}
     </Container>
   );
 };

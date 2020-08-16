@@ -15,10 +15,13 @@ const ListManager = () => {
   const removeItemOne = (id) => {
     setItems(items.filter((item) => item.id !== id));
   };
+  const removeAll = () => {
+    setItems(items.splice(items.length));
+  };
 
   return (
     <>
-      <List items={items} removeItemOne={removeItemOne} />
+      <List items={items} removeItemOne={removeItemOne} removeAll={removeAll} />
       <Form onSubmit={addItem} />
     </>
   );
