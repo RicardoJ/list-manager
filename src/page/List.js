@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import ListItem from "../components/ListItem";
+import ListItem from "../components/ItemList";
 import Button from "../components/Button";
 
 const Container = styled.div`
@@ -20,23 +20,26 @@ const Title = styled.div`
   font-style: normal;
   font-weight: bold;
   font-size: 32px;
-  width: 32rem;
+  width: 25rem;
   line-height: 37px;
   margin-bottom: 20px;
-  width: 32rem;
   display: flex;
   justify-content: space-between;
 `;
-const List = () => {
+
+const List = ({ items }) => {
   return (
     <Container>
       <Title>
         List
-        <Button >
-          <FontAwesomeIcon icon={faTrash} title='Delete all'/>
+        <Button>
+          <FontAwesomeIcon icon={faTrash} title="Delete all" />
         </Button>
       </Title>
-      <ListItem />
+      {items.map((item) => (
+      <ListItem items={item} key={item.id} />
+      ))}
+      
     </Container>
   );
 };
