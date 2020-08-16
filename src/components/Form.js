@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -15,13 +15,18 @@ const Add = styled.div`
   height: 2rem;
 `;
 
-const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit, updateItem, editItem }) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (onSubmit) onSubmit(value);
-    setValue("");
+    if (editItem === null) {
+      onSubmit(value);
+      setValue("");
+    } else {
+      updateItem(value, editItem.id);
+      setValue("");
+    }
   };
 
   const updateValue = (e) => {
@@ -30,9 +35,13 @@ const Form = ({ onSubmit }) => {
 
   const keyPress = (e) => {
     if (e.key === "Enter") {
-      onSubmit(value);
+      handleSubmit(e)
     }
   };
+
+  useEffect(() => {
+    editItem != null ? setValue(editItem.name) : setValue("");
+  }, [editItem]);
 
   return (
     <InnerForm onSubmit={handleSubmit}>
