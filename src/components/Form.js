@@ -43,6 +43,7 @@ const Form = ({ onSubmit, updateItem, editItem }) => {
   useEffect(() => {
     editItem != null ? setValue(editItem.name) : setValue("");
   }, [editItem]);
+
   return (
     <InnerForm onSubmit={handleSubmit}>
       <Input value={value} onChange={updateValue} onKeyDown={keyPress} />
