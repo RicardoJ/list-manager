@@ -21,18 +21,24 @@ const Form = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onSubmit) onSubmit(value);
-    setValue("")
+    setValue("");
   };
 
   const updateValue = (e) => {
     setValue(e.target.value);
   };
 
+  const keyPress = (e) => {
+    if (e.key === "Enter") {
+      onSubmit(value);
+    }
+  };
+
   return (
     <InnerForm onSubmit={handleSubmit}>
-      <Input value={value} onChange={updateValue} />
+      <Input value={value} onChange={updateValue} onKeyDown={keyPress} />
       <Add>
-        <Button onClick={handleSubmit} type="button">
+        <Button onClick={handleSubmit}>
           <FontAwesomeIcon icon={faPlus} title="Delete" />
         </Button>
       </Add>
