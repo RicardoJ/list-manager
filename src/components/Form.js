@@ -10,10 +10,6 @@ const Container = styled.div`
   justify-content: space-between;
   height: 3rem;
 `;
-const Add = styled.div`
-  width: 3rem;
-  height: 2rem;
-`;
 
 const Form = ({ onSubmit, editItem }) => {
   const [value, setValue] = useState("");
@@ -41,11 +37,9 @@ const Form = ({ onSubmit, editItem }) => {
   return (
     <Container>
       <Input value={value} onChange={updateValue} onKeyDown={keyPress} />
-      <Add>
-        <Button onClick={handleSubmit}>
-          <FontAwesomeIcon icon={faPlus} title="Delete" />
-        </Button>
-      </Add>
+      <Button onClick={handleSubmit}>
+        <FontAwesomeIcon icon={faPlus} title="Delete" />
+      </Button>
     </Container>
   );
 };

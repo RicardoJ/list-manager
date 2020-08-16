@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Item from "../components/Item";
+import ItemList from "../components/ItemList";
 
 const Container = styled.div`
   margin-left: 15px;
@@ -13,20 +13,15 @@ const Container = styled.div`
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 `;
 
-const ItemList = styled.div`
-  overflow-y: auto;
-`;
-
-const Area = ({ items }) => {
+const Area = ({ items, onRemoveItem, onEdit, onItemClick }) => {
   return (
     <Container>
-      <ItemList>
-        {items.length ? (
-          items.map((item) => <Item item={item} key={item.id} />)
-        ) : (
-          <h1>No Items</h1>
-        )}
-      </ItemList>
+       <ItemList
+        items={items}
+        onRemoveItem={onRemoveItem}
+        onEdit={onEdit}
+        onItemClick={onItemClick}
+      />
     </Container>
   );
 };

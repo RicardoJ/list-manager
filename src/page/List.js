@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import Item from "../components/Item";
 import Button from "../components/Button";
+import ItemList from "../components/ItemList";
 
 const Container = styled.div`
   width: 40%;
@@ -26,16 +26,8 @@ const Title = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const ItemList = styled.div`
-  overflow-y: auto;
-`;
-const List = ({
-  items,
-  onRemoveAll,
-  onRemoveItem,
-  onEdit,
-  onItemClick
-}) => {
+
+const List = ({ items, onRemoveAll, onRemoveItem, onEdit, onItemClick }) => {
   return (
     <Container>
       <Title>
@@ -44,21 +36,12 @@ const List = ({
           <FontAwesomeIcon icon={faTrash} title="Delete all" />
         </Button>
       </Title>
-      <ItemList>
-        {items.length ? (
-          items.map((item) => (
-            <Item
-              key={item.id}
-              item={item}
-              onRemoveItem={onRemoveItem}
-              onEdit={onEdit}
-              onItemClick={onItemClick}
-            />
-          ))
-        ) : (
-          <h1>No Items</h1>
-        )}
-      </ItemList>
+      <ItemList
+        items={items}
+        onRemoveItem={onRemoveItem}
+        onEdit={onEdit}
+        onItemClick={onItemClick}
+      />
     </Container>
   );
 };
