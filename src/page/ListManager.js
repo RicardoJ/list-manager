@@ -12,13 +12,21 @@ const fakeItems = [
 
 const ListManager = () => {
   const [items, setItems] = useState(fakeItems);
-  const [removeItem, setRemoveItem] = useState([]);
+  const [removedItems, setRemovedItems] = useState([]);
   const [editItem, setEditItem] = useState(null);
 
-  const addItemToSecondList = (item) =>{ 
-    setRemoveItem([...removeItem,item]);}
+  const addItemToSecondList = (item) => {
+    setRemovedItems([...removedItems, item]);
+    setItems(items.filter((i) => item.id !== i.id));
+  };
 
-  const addItem = (name) => setItems([...items, { name, id: uuid() }]);
+  const addItem = (name) => {
+    if (editItem === null) {
+      setItems([...items, { name, id: uuid() }]);
+    } else {
+      updateItem(name, editItem.id);
+    }
+  };
 
   const findItem = (item) => setEditItem(item);
   const updateItem = (name, id) => {
@@ -38,8 +46,8 @@ const ListManager = () => {
         onItemClick={addItemToSecondList}
         onEdit={findItem}
       />
-      <Form onSubmit={addItem} updateItem={updateItem} editItem={editItem} />
-      <Area removeItem={removeItem} />
+      <Form onSubmit={addItem}  editItem={editItem} />
+      <Area items={removedItems} />
     </>
   );
 };

@@ -6,7 +6,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "./Button";
 
-const ItemWrapper = styled.div`
+const Container = styled.div`
   font-size: 1.8rem;
   letter-spacing: 0.1rem;
   margin-bottom: 1.5rem;
@@ -25,7 +25,7 @@ const Icons = styled.div`
 
 const Item = ({ item, onEdit, onRemoveItem, onItemClick }) => {
   return (
-    <ItemWrapper>
+    <Container>
       <Button onClick={() => onItemClick(item)}>{item.name}</Button>
       <Icons>
         <Button onClick={() => onEdit(item)}>
@@ -35,7 +35,7 @@ const Item = ({ item, onEdit, onRemoveItem, onItemClick }) => {
           <FontAwesomeIcon icon={faTrash} title="Delete" />
         </Button>
       </Icons>
-    </ItemWrapper>
+    </Container>
   );
 };
 

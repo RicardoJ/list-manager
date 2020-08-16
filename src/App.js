@@ -25,7 +25,6 @@ function App() {
     <Container>
       <AppWrapper>
         <ListManager />
-       
       </AppWrapper>
     </Container>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Item from "../components/Item";
 
-const Wrapper = styled.div`
+const Container = styled.div`
   margin-left: 15px;
   padding: 0.8rem 0.8rem 0.8rem 0.8rem;
   border-radius: 0.3rem;
@@ -17,17 +17,17 @@ const ItemList = styled.div`
   overflow-y: auto;
 `;
 
-const Area = ({ removeItem }) => {
+const Area = ({ items }) => {
   return (
-    <Wrapper>
+    <Container>
       <ItemList>
-        {removeItem.length ? (
-          removeItem.map((item) => <Item item={item} key={item.id} />)
+        {items.length ? (
+          items.map((item) => <Item item={item} key={item.id} />)
         ) : (
           <h1>No Items</h1>
         )}
       </ItemList>
-    </Wrapper>
+    </Container>
   );
 };
 
