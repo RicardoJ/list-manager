@@ -7,7 +7,7 @@ import Button from "../components/Button";
 
 const Container = styled.div`
   width: 40%;
-  height: 66vh;
+  max-height: 66vh;
   display: flex;
   padding: 10px;
   display: flex;
@@ -26,7 +26,9 @@ const Title = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
+const Items = styled.div`
+  overflow-y: auto;
+`;
 const List = ({ items, removeItemOne, removeAll, findItem }) => {
   return (
     <Container>
@@ -36,18 +38,20 @@ const List = ({ items, removeItemOne, removeAll, findItem }) => {
           <FontAwesomeIcon icon={faTrash} title="Delete all" />
         </Button>
       </Title>
-      {items.length ? (
-        items.map((item) => (
-          <ItemList
-            items={item}
-            key={item.id}
-            removeItemOne={removeItemOne}
-            findItem={findItem}
-          />
-        ))
-      ) : (
-        <h1>No Items</h1>
-      )}
+      <Items>
+        {items.length ? (
+          items.map((item) => (
+            <ItemList
+              items={item}
+              key={item.id}
+              removeItemOne={removeItemOne}
+              findItem={findItem}
+            />
+          ))
+        ) : (
+          <h1>No Items</h1>
+        )}
+      </Items>
     </Container>
   );
 };
