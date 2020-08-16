@@ -36,7 +36,10 @@ const List = ({ items }) => {
           <FontAwesomeIcon icon={faTrash} title="Delete all" />
         </Button>
       </Title>
-      <ListItem items={items} />
+      {items.map((item) => (
+      <ListItem items={item} key={item.id} />
+      ))}
+      
     </Container>
   );
 };

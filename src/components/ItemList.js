@@ -25,21 +25,17 @@ const Icons = styled.div`
 
 const ItemList = ({ items }) => {
   return (
-    <>
-      {items.map((listItem) => (
-        <Item key={listItem.id}>
-          {listItem.item}
-          <Icons>
-            <Button>
-              <FontAwesomeIcon icon={faEdit} title="Edit" />
-            </Button>
-            <Button>
-              <FontAwesomeIcon icon={faTrash} title="Delete" />
-            </Button>
-          </Icons>
-        </Item>
-      ))}
-    </>
+    <Item>
+      {items.item}
+      <Icons>
+        <Button>
+          <FontAwesomeIcon icon={faEdit} title="Edit" />
+        </Button>
+        <Button>
+          <FontAwesomeIcon icon={faTrash} title="Delete" />
+        </Button>
+      </Icons>
+    </Item>
   );
 };
 
