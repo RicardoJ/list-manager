@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -45,5 +46,11 @@ const List = ({ items, onRemoveAll, onRemoveItem, onEdit, onItemClick }) => {
     </Container>
   );
 };
-
+List.propTypes = {
+  items: PropTypes.array,
+  onRemoveAll: PropTypes.func,
+  onRemoveItem: PropTypes.func,
+  onEdit: PropTypes.func,
+  onItemClick: PropTypes.func,
+};
 export default List;

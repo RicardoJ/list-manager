@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Input from "./Input";
@@ -43,5 +44,8 @@ const Form = ({ onSubmit, editItem }) => {
     </Container>
   );
 };
-
+Form.propTypes = {
+  onSubmit: PropTypes.func,
+  editItem: PropTypes.array,
+};
 export default Form;

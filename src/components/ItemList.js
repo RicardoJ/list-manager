@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Item from "../components/Item";
 
@@ -25,5 +26,10 @@ const ItemList = ({ items, onRemoveItem, onEdit, onItemClick }) => {
     </Container>
   );
 };
-
+ItemList.propTypes = {
+  items: PropTypes.array,
+  onRemoveItem: PropTypes.func,
+  onEdit: PropTypes.func,
+  onItemClick: PropTypes.func,
+};
 export default ItemList;

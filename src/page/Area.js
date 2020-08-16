@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import ItemList from "../components/ItemList";
 
@@ -25,5 +26,10 @@ const Area = ({ items, onRemoveItem, onEdit, onItemClick }) => {
     </Container>
   );
 };
-
+Area.propTypes = {
+  items: PropTypes.array,
+  onRemoveItem: PropTypes.func,
+  onEdit: PropTypes.func,
+  onItemClick: PropTypes.func,
+};
 export default Area;
