@@ -23,7 +23,7 @@ const Icons = styled.div`
   justify-content: space-between;
 `;
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, removeItemOne }) => {
   return (
     <Item>
       {items.item}
@@ -32,7 +32,11 @@ const ItemList = ({ items }) => {
           <FontAwesomeIcon icon={faEdit} title="Edit" />
         </Button>
         <Button>
-          <FontAwesomeIcon icon={faTrash} title="Delete" />
+          <FontAwesomeIcon
+            icon={faTrash}
+            title="Delete"
+            onClick={()=>removeItemOne(items.id)}
+          />
         </Button>
       </Icons>
     </Item>

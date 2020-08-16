@@ -12,10 +12,13 @@ const fakeItems = [
 const ListManager = () => {
   const [items, setItems] = useState(fakeItems);
   const addItem = (item) => setItems([...items, { item, id: uuid() }]);
+  const removeItemOne = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
 
   return (
     <>
-      <List items={items} />
+      <List items={items} removeItemOne={removeItemOne} />
       <Form onSubmit={addItem} />
     </>
   );

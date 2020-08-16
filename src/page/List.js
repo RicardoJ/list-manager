@@ -27,7 +27,7 @@ const Title = styled.div`
   justify-content: space-between;
 `;
 
-const List = ({ items }) => {
+const List = ({ items, removeItemOne }) => {
   return (
     <Container>
       <Title>
@@ -37,9 +37,8 @@ const List = ({ items }) => {
         </Button>
       </Title>
       {items.map((item) => (
-      <ListItem items={item} key={item.id} />
+        <ListItem items={item} key={item.id} removeItemOne={removeItemOne} />
       ))}
-      
     </Container>
   );
 };
