@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import ListItem from "../components/ItemList";
+import ItemList from "../components/ItemList";
 import Button from "../components/Button";
 
 const Container = styled.div`
@@ -27,8 +27,7 @@ const Title = styled.div`
   justify-content: space-between;
 `;
 
-const List = ({ items, removeItemOne, removeAll }) => {
-  //console.log(items.length);
+const List = ({ items, removeItemOne, removeAll, findItem }) => {
   return (
     <Container>
       <Title>
@@ -37,12 +36,17 @@ const List = ({ items, removeItemOne, removeAll }) => {
           <FontAwesomeIcon icon={faTrash} title="Delete all" />
         </Button>
       </Title>
-      {items.length === 0 ? (
-        <h1>none</h1>
-      ) : (
+      {items.length ? (
         items.map((item) => (
-          <ListItem items={item} key={item.id} removeItemOne={removeItemOne} />
+          <ItemList
+            items={item}
+            key={item.id}
+            removeItemOne={removeItemOne}
+            findItem={findItem}
+          />
         ))
+      ) : (
+        <h1>No Items</h1>
       )}
     </Container>
   );
