@@ -16,7 +16,7 @@ const Container = styled.div`
 const Area = ({ items, onRemoveItem, onEdit, onItemClick }) => {
   return (
     <Container>
-       <ItemList
+      <ItemList
         items={items}
         onRemoveItem={onRemoveItem}
         onEdit={onEdit}

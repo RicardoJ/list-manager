@@ -46,8 +46,13 @@ const ListManager = () => {
         onItemClick={addItemToSecondList}
         onEdit={findItem}
       />
-      <Form onSubmit={addItem}  editItem={editItem} />
-      <Area items={removedItems} />
+      <Form onSubmit={addItem} editItem={editItem} />
+      <Area
+        items={removedItems}
+        onRemoveItem={onRemoveItem}
+        onItemClick={addItemToSecondList}
+        onEdit={findItem}
+      />
     </>
   );
 };
