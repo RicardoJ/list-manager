@@ -35,8 +35,7 @@ const Form = ({ onSubmit, updateItem, editItem }) => {
 
   const keyPress = (e) => {
     if (e.key === "Enter") {
-      onSubmit(value);
-      setValue("");
+      handleSubmit(e)
     }
   };
 
