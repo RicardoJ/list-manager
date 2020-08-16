@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
 import Button from "./Button";
 
 const Item = styled.div`
@@ -22,15 +23,10 @@ const Icons = styled.div`
   justify-content: space-between;
 `;
 
-const ListItem = () => {
-  const [listFixed, setListFixed] = useState([
-    { item: "Food", id: 1 },
-    { item: "Hobbie", id: 1 },
-    { item: "Sports", id: 1 },
-  ]);
+const ItemList = ({ items }) => {
   return (
     <>
-      {listFixed.map((listItem) => (
+      {items.map((listItem) => (
         <Item key={listItem.id}>
           {listItem.item}
           <Icons>
@@ -47,4 +43,4 @@ const ListItem = () => {
   );
 };
 
-export default ListItem;
+export default ItemList;
