@@ -19,6 +19,10 @@ const ListManager = () => {
     setRemovedItems([...removedItems, item]);
     setItems(items.filter((i) => item.id !== i.id));
   };
+  const returnItemToFirstList = (item) => {
+    setItems([...items, item]);
+    setRemovedItems(removedItems.filter((i) => item.id !== i.id));
+  };
 
   const addItem = (name) => {
     if (editItem === null) {
@@ -35,6 +39,9 @@ const ListManager = () => {
   const onRemoveItem = (id) => {
     setItems(items.filter((item) => item.id !== id));
   };
+  const onRemoveItemFromSecondList = (id) => {
+    setRemovedItems(removedItems.filter((item) => item.id !== id));
+  };
   const onRemoveAll = () => setItems([]);
 
   return (
@@ -49,8 +56,8 @@ const ListManager = () => {
       <Form onSubmit={addItem} editItem={editItem} />
       <Area
         items={removedItems}
-        onRemoveItem={onRemoveItem}
-        onItemClick={addItemToSecondList}
+        onRemoveItem={onRemoveItemFromSecondList}
+        onItemClick={returnItemToFirstList}
         onEdit={findItem}
       />
     </>
