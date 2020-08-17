@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import uuid from "uuid/v4";
 import List from "./List";
 import Form from "../components/Form";
-import Area from "./Area";
+import Area from "./SecondList";
 
 const fakeItems = [
   { name: "Food", id: 1 },
@@ -28,13 +28,19 @@ const ListManager = () => {
     if (editItem === null) {
       setItems([...items, { name, id: uuid() }]);
     } else {
+      setEditItem(null);
       updateItem(name, editItem.id);
     }
   };
 
-  const findItem = (item) => setEditItem(item);
+  const setItemInEdition = (item) => setEditItem(item);
+
   const updateItem = (name, id) => {
-    setItems(items.map((item) => (item.id === id ? { name, id } : item)));
+    if (editItem?.listName === "removedItems")
+      setRemovedItems(
+        removedItems.map((item) => (item.id === id ? { name, id } : item))
+      );
+    else setItems(items.map((item) => (item.id === id ? { name, id } : item)));
   };
   const onRemoveItem = (id) => {
     setItems(items.filter((item) => item.id !== id));
@@ -51,14 +57,14 @@ const ListManager = () => {
         onRemoveItem={onRemoveItem}
         onRemoveAll={onRemoveAll}
         onItemClick={addItemToSecondList}
-        onEdit={findItem}
+        onEdit={setItemInEdition}
       />
       <Form onSubmit={addItem} editItem={editItem} />
       <Area
         items={removedItems}
         onRemoveItem={onRemoveItemFromSecondList}
         onItemClick={returnItemToFirstList}
-        onEdit={findItem}
+        onEdit={setItemInEdition}
       />
     </>
   );

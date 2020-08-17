@@ -14,22 +14,22 @@ const Container = styled.div`
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 `;
 
-const Area = ({ items, onRemoveItem, onEdit, onItemClick }) => {
+const SecondList = ({ items, onRemoveItem, onEdit, onItemClick }) => {
   return (
     <Container>
       <ItemList
         items={items}
         onRemoveItem={onRemoveItem}
-        onEdit={onEdit}
+        onEdit={(item) => onEdit({ ...item, listName: "removedItems" })}
         onItemClick={onItemClick}
       />
     </Container>
   );
 };
-Area.propTypes = {
+SecondList.propTypes = {
   items: PropTypes.array,
   onRemoveItem: PropTypes.func,
   onEdit: PropTypes.func,
   onItemClick: PropTypes.func,
 };
-export default Area;
+export default SecondList;
