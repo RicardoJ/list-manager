@@ -46,6 +46,6 @@ const Form = ({ onSubmit, editItem }) => {
 };
 Form.propTypes = {
   onSubmit: PropTypes.func,
-  editItem: PropTypes.array,
+  editItem: PropTypes.object,
 };
 export default Form;
