@@ -1,8 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
-
-const Wrapper = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   height: 3rem;
@@ -22,10 +22,12 @@ const InputAdd = styled.input`
 
 const Input = ({ ...otherProps }) => {
   return (
-    <Wrapper>
+    <Container>
       <InputAdd type="text" placeholder="Add" {...otherProps} />
-    </Wrapper>
+    </Container>
   );
 };
-
+Input.propTypes = {
+  otherProps: PropTypes.array,
+};
 export default Input;

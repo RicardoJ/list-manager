@@ -1,32 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Input from "./Input";
 import Button from "./Button";
 
-const InnerForm = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   height: 3rem;
 `;
-const Add = styled.div`
-  width: 3rem;
-  height: 2rem;
-`;
 
-const Form = ({ onSubmit, updateItem, editItem }) => {
+const Form = ({ onSubmit, editItem }) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (editItem === null) {
-      onSubmit(value);
-      setValue("");
-    } else {
-      updateItem(value, editItem.id);
-      setValue("");
-    }
+    onSubmit(value);
+    setValue("");
   };
 
   const updateValue = (e) => {
@@ -35,7 +27,7 @@ const Form = ({ onSubmit, updateItem, editItem }) => {
 
   const keyPress = (e) => {
     if (e.key === "Enter") {
-      handleSubmit(e)
+      handleSubmit(e);
     }
   };
 
@@ -44,15 +36,16 @@ const Form = ({ onSubmit, updateItem, editItem }) => {
   }, [editItem]);
 
   return (
-    <InnerForm onSubmit={handleSubmit}>
+    <Container>
       <Input value={value} onChange={updateValue} onKeyDown={keyPress} />
-      <Add>
-        <Button onClick={handleSubmit}>
-          <FontAwesomeIcon icon={faPlus} title="Delete" />
-        </Button>
-      </Add>
-    </InnerForm>
+      <Button onClick={handleSubmit}>
+        <FontAwesomeIcon icon={faPlus} title="Delete" />
+      </Button>
+    </Container>
   );
 };
-
+Form.propTypes = {
+  onSubmit: PropTypes.func,
+  editItem: PropTypes.object,
+};
 export default Form;

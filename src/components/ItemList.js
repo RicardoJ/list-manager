@@ -1,42 +1,35 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import Item from "../components/Item";
 
-import Button from "./Button";
-
-const Item = styled.div`
-  font-size: 1.8rem;
-  letter-spacing: 0.1rem;
-  margin-bottom: 1.5rem;
-  padding: 0.4rem 0.4rem 0.4rem 0.7rem;
-  border-radius: 0.3rem;
-  width: 25rem;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-`;
-const Icons = styled.div`
-  width: 5rem;
-  display: flex;
-  justify-content: space-between;
+const Container = styled.div`
+  overflow-y: auto;
 `;
 
-const ItemList = ({ items, removeItemOne, findItem }) => {
+const ItemList = ({ items, onRemoveItem, onEdit, onItemClick }) => {
   return (
-    <Item>
-      {items.name}
-      <Icons>
-        <Button onClick={() => findItem(items.id)}>
-          <FontAwesomeIcon icon={faEdit} title="Edit" />
-        </Button>
-        <Button onClick={() => removeItemOne(items.id)}>
-          <FontAwesomeIcon icon={faTrash} title="Delete" />
-        </Button>
-      </Icons>
-    </Item>
+    <Container>
+      {items.length ? (
+        items.map((item) => (
+          <Item
+            key={item.id}
+            item={item}
+            onRemoveItem={onRemoveItem}
+            onEdit={onEdit}
+            onItemClick={onItemClick}
+          />
+        ))
+      ) : (
+        <h1>No Items</h1>
+      )}
+    </Container>
   );
 };
-
+ItemList.propTypes = {
+  items: PropTypes.array,
+  onRemoveItem: PropTypes.func,
+  onEdit: PropTypes.func,
+  onItemClick: PropTypes.func,
+};
 export default ItemList;
